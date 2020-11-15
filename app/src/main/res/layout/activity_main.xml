@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:text="@string/enter_details"
+        android:textSize="30sp"
+        android:layout_alignParentStart="true"
+        android:id="@+id/tv_details"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/enter_your_name"
+        android:inputType="text"
+        android:layout_below="@id/tv_details"
+        android:id="@+id/et_name"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/et_rollno"
+        android:inputType="text"
+        android:hint="@string/enter_your_roll_no"
+        android:layout_below="@id/et_name"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/enter_your_blood_group"
+        android:inputType="text"
+        android:id="@+id/et_bloodgroup"
+        android:layout_below="@id/et_rollno"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/enter_your_dob"
+        android:inputType="date"
+        android:id="@+id/et_DOB"
+        android:layout_below="@id/et_bloodgroup"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:text="@string/submit"
+        android:layout_below="@id/et_DOB"
+        android:layout_centerInParent="true"
+        android:onClick="onSubmitClicked"/>
+
+
+</RelativeLayout>
