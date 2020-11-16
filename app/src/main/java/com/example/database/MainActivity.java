@@ -36,22 +36,15 @@ public class MainActivity extends AppCompatActivity {
         long mrollno = !metRoll.getText().toString().isEmpty()?Long.parseLong(metRoll.getText().toString()):0;
         String mbg = metBG.getText().toString();
         String mdob = metDOB.getText().toString();
-        int count = 0;
 
         if(mname.isEmpty()){
             Toast.makeText(MainActivity.this,"Please Enter Name",Toast.LENGTH_LONG).show();
-            count = count + 1;
         }else if(mbg.isEmpty()){
             Toast.makeText(MainActivity.this,"Please Enter Blood Group",Toast.LENGTH_LONG).show();
-            count = count + 1;
         }else if (mdob.isEmpty()){
             Toast.makeText(MainActivity.this,"Please Enter DOB",Toast.LENGTH_LONG).show();
-            count = count + 1;
         }else {
-            Toast.makeText(MainActivity.this,"Successfully Submited",Toast.LENGTH_LONG).show();
-        }
-
-        if(count <= 0) {
+            Toast.makeText(MainActivity.this,"Submitted Successfully",Toast.LENGTH_LONG).show();
             student mstudent = new student();
             mstudent.setName(mname);
             mstudent.setRollNo(mrollno);

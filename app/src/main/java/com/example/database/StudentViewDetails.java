@@ -21,7 +21,7 @@ public class StudentViewDetails extends AppCompatActivity {
         student studentdetails = (student) data.getSerializable(MainActivity.keyword);
 
         name.setText(studentdetails.getName());
-//        roll.setText((int) studentdetails.getRollNo());
+        roll.setText(String.valueOf(studentdetails.getRollNo()));
         bg.setText(studentdetails.getBG());
         dob.setText(studentdetails.getDOB());
 
