@@ -7,4 +7,21 @@
     <string name="enter_your_dob">Enter your DOB</string>
     <string name="submit">SUBMIT</string>
     <string name="textview">TextView</string>
+    <string name="name">Name :</string>
+    <string name="roll_no">Roll No :</string>
+    <string name="blood_Group">Blood Group :</string>
+    <string name="dob">DOB :</string>
+    <string name="todo">TODO</string>
+    <string-array name="bloodgroup">
+        <item>Select Blood Group</item>
+        <item>O+ve</item>
+        <item>O-ve</item>
+        <item>A+ve</item>
+        <item>A-ve</item>
+        <item>B+ve</item>
+        <item>B-ve</item>
+        <item>AB+ve</item>
+        <item>AB-ve</item>
+        <item>Bombay Blood Group</item>
+    </string-array>
 </resources>

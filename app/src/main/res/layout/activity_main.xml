@@ -28,12 +28,10 @@
         android:inputType="text"
         android:hint="@string/enter_your_roll_no"
         android:layout_below="@id/et_name"/>
-    <EditText
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/enter_your_blood_group"
-        android:inputType="text"
-        android:id="@+id/et_bloodgroup"
+        android:id="@+id/blood_group"
         android:layout_below="@id/et_rollno"/>
     <EditText
         android:layout_width="match_parent"
@@ -41,7 +39,7 @@
         android:hint="@string/enter_your_dob"
         android:inputType="date"
         android:id="@+id/et_DOB"
-        android:layout_below="@id/et_bloodgroup"/>
+        android:layout_below="@id/blood_group"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
