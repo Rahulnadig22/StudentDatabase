@@ -22,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
     private EditText metName;
     private EditText metRoll;
     private  EditText metDOB;
-    public static String keyword = "STUDENT";
+    public static final String BUNDLE_IS_EDIT = "is_edit";
+    public static final String BUNDLE_STUDENT = "student";
     private  String selected_blood = "";
     private Spinner spnblood;
     private DatabaseHelper dbhelper;
     private Boolean first = false;
+    private Boolean isEdit = false;
+    private student editStudentinfo;
+    private Button mbtnInput;
 
 
 
@@ -39,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
         metRoll = findViewById(R.id.et_rollno);
         spnblood = findViewById(R.id.blood_group);
         metDOB = findViewById(R.id.et_DOB);
+        mbtnInput = findViewById(R.id.submit);
+
+        Bundle data = getIntent().getExtras();
+        if(data!=null){
+            isEdit = data.getBoolean(BUNDLE_IS_EDIT);
+            editStudentinfo = (student) data.getSerializable(BUNDLE_STUDENT);
+        }
 
         final String[] bloodgroups = getResources().getStringArray(R.array.bloodgroup);
         ArrayAdapter<String> bgAdapter = new ArrayAdapter<String>(MainActivity.this,R.layout.spinner_custom,R.id.spinner_text,bloodgroups);
@@ -65,6 +76,22 @@ public class MainActivity extends AppCompatActivity {
 
         dbhelper = new DatabaseHelper(MainActivity.this);
 
+        if(isEdit && editStudentinfo != null){
+            metName.setText(editStudentinfo.getName());
+            metDOB.setText(editStudentinfo.getDOB());
+            metRoll.setText(String.valueOf(editStudentinfo.getRollNo()));
+
+            for(int i=0;i<bloodgroups.length;i++){
+                String blood = bloodgroups[i];
+                if(blood.equals(editStudentinfo.getBG())){
+                    spnblood.setSelection(i);
+                }
+            }
+
+            mbtnInput.setText("Edit Student");
+        }
+
+
 
     }
 
@@ -87,19 +114,28 @@ public class MainActivity extends AppCompatActivity {
             mstudent.setBG(selected_blood);
             mstudent.setDOB(mdob);
 
-            dbhelper.insertDataToDatabase(dbhelper.getWritableDatabase(),mstudent);
+            if(isEdit){
+                mstudent.setId(editStudentinfo.getId());
+                dbhelper.updateStudent(mstudent,dbhelper.getWritableDatabase());
+            }else {
+                dbhelper.insertDataToDatabase(dbhelper.getWritableDatabase(), mstudent);
+            }
+
             metName.setText("");
             metRoll.setText("");
             metDOB.setText("");
             spnblood.setSelection(0);
-//            setResult(Activity.RESULT_OK);
-//            finish();
+            setResult(Activity.RESULT_OK);
+            finish();
 
             Intent details = new Intent(MainActivity.this, StudentViewDetails.class);
-//            details.putExtra(keyword, mstudent);
             startActivity(details);
 
         }
+    }
+    public void onCancelClicked(View view){
+        setResult(Activity.RESULT_CANCELED);
+        finish();
     }
 
 }

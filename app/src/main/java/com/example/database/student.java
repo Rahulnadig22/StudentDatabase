@@ -7,6 +7,15 @@ public class student implements Serializable {
     private long rollNo;
     private String BG;
     private String DOB;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

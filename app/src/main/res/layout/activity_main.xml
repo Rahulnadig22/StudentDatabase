@@ -20,14 +20,16 @@
         android:hint="@string/enter_your_name"
         android:inputType="text"
         android:layout_below="@id/tv_details"
-        android:id="@+id/et_name"/>
+        android:id="@+id/et_name"
+        android:autofillHints="Name" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:id="@+id/et_rollno"
         android:inputType="text"
         android:hint="@string/enter_your_roll_no"
-        android:layout_below="@id/et_name"/>
+        android:layout_below="@id/et_name"
+        android:autofillHints="Roll Number" />
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -39,7 +41,8 @@
         android:hint="@string/enter_your_dob"
         android:inputType="date"
         android:id="@+id/et_DOB"
-        android:layout_below="@id/blood_group"/>
+        android:layout_below="@id/blood_group"
+        android:autofillHints="DOB" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,6 +51,15 @@
         android:layout_below="@id/et_DOB"
         android:layout_centerInParent="true"
         android:onClick="onSubmitClicked"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel"
+        android:text="@string/cancel"
+        android:layout_below="@id/submit"
+        android:layout_centerHorizontal="true"
+        android:onClick="onCancelClicked"/>
+
 
 
 </RelativeLayout>

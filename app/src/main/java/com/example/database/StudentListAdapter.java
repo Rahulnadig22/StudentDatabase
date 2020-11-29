@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,9 +16,16 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
 
     private Context context;
     private ArrayList<student> studentList;
+
+    private StudentClickListener listener;
+
     public StudentListAdapter(Context context,ArrayList<student> student){
         this.context = context;
         this.studentList = student;
+    }
+
+    public void setListener(StudentClickListener listener){
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,6 +44,23 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         holder.mTvbg.setText(currentStudent.getBG());
         holder.mTvDOB.setText(currentStudent.getDOB());
 
+        holder.mrledit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(listener!=null){
+                    listener.onEditStudentClicked(currentStudent);
+                }
+            }
+        });
+
+        holder.mrldelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onDeleteStudentClicked(currentStudent);
+            }
+        });
+
+
     }
 
 
@@ -51,6 +76,9 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
         private TextView mTvbg;
         private TextView mTvDOB;
 
+        private RelativeLayout mrledit;
+        private RelativeLayout mrldelete;
+
 
         public StudentListHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +86,13 @@ public class StudentListAdapter extends RecyclerView.Adapter<StudentListAdapter.
             mTvroll = itemView.findViewById(R.id.rollno_details);
             mTvbg = itemView.findViewById(R.id.blood_group_details);
             mTvDOB = itemView.findViewById(R.id.DOB_details);
+            mrledit = itemView.findViewById(R.id.edit_icon);
+            mrldelete = itemView.findViewById(R.id.delete_icon);
         }
+    }
+
+    public interface StudentClickListener{
+        void onEditStudentClicked(student student);
+        void onDeleteStudentClicked(student student);
     }
 }

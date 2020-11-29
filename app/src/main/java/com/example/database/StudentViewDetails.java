@@ -11,12 +11,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class StudentViewDetails extends AppCompatActivity {
+public class StudentViewDetails extends AppCompatActivity implements StudentListAdapter.StudentClickListener{
 
     private DatabaseHelper dbHelper;
     private RecyclerView mRcStudent;
@@ -35,6 +36,7 @@ public class StudentViewDetails extends AppCompatActivity {
     private void setDataToAdapter(){
         ArrayList<student> students = dbHelper.getStudentFromDatabase(dbHelper.getReadableDatabase());
         StudentListAdapter adapter = new StudentListAdapter(StudentViewDetails.this,students);
+        adapter.setListener(StudentViewDetails.this);
         mRcStudent.setAdapter(adapter);
     }
 
@@ -48,8 +50,24 @@ public class StudentViewDetails extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 101 && resultCode == Activity.RESULT_OK){
             setDataToAdapter();
+        }else if(requestCode == 120 && resultCode == Activity.RESULT_OK){
+            setDataToAdapter();
         }
     }
 
+    @Override
+    public void onEditStudentClicked(student student) {
+//        Toast.makeText(StudentViewDetails.this,"Edit",Toast.LENGTH_LONG).show();
+        Intent editIntent = new Intent(StudentViewDetails.this,MainActivity.class);
+        editIntent.putExtra(MainActivity.BUNDLE_IS_EDIT,true);
+        editIntent.putExtra(MainActivity.BUNDLE_STUDENT,student);
+        startActivityForResult(editIntent,120);
+    }
 
+    @Override
+    public void onDeleteStudentClicked(student student) {
+//        Toast.makeText(StudentViewDetails.this,"Delete",Toast.LENGTH_LONG).show();
+        dbHelper.deleteStudent(student,dbHelper.getWritableDatabase());
+        setDataToAdapter();
+    }
 }

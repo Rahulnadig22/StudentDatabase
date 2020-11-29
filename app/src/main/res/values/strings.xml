@@ -12,6 +12,7 @@
     <string name="blood_Group">Blood Group :</string>
     <string name="dob">DOB :</string>
     <string name="todo">TODO</string>
+    <string name="cancel">cancel</string>
     <string-array name="bloodgroup">
         <item>Select Blood Group</item>
         <item>O+ve</item>

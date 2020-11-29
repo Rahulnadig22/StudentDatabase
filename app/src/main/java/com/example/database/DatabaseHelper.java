@@ -1,5 +1,6 @@
 package com.example.database;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -22,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String col_bg = "stu_bg";
     private static final String col_dob = "stu_dob";
 
-    private static final String CREATE_TABLE = "CREATE TABLE " +TABLE_NAME+"("+col_id+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ col_stu_name+" TEXT,"+col_stu_roll+" INTEGER,"+col_bg+" TEXT,"+col_dob+" INTEGER)";
+    private static final String CREATE_TABLE = "CREATE TABLE " +TABLE_NAME+"("+col_id+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ col_stu_name+" TEXT,"+col_stu_roll+" INTEGER,"+col_bg+" TEXT,"+col_dob+" TEXT)";
 
 
     public DatabaseHelper(@Nullable Context context) {
@@ -54,7 +55,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<student> getStudentFromDatabase(SQLiteDatabase db){
         ArrayList<student> studentList = new ArrayList<student>();
-        Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
+        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM "+TABLE_NAME,null);
 
         if (cursor.moveToFirst()){
             do {
@@ -67,5 +68,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
         return studentList;
+    }
+
+    public void deleteStudent(student student,SQLiteDatabase database){
+        database.delete(TABLE_NAME, col_id+"="+student.getId(),null);
+    }
+
+    public void updateStudent(student student,SQLiteDatabase database){
+        ContentValues cv = new ContentValues();
+        cv.put(col_stu_name, student.getName());
+        cv.put(col_stu_roll,student.getRollNo());
+        cv.put(col_bg,student.getBG());
+        cv.put(col_dob,student.getDOB());
+
+        database.update(TABLE_NAME,cv,col_id+"="+student.getId(),null);
     }
 }

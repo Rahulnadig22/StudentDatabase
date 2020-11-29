@@ -1,93 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:text="@string/name"
-        android:textSize="24sp"
-        />
+        android:id="@+id/relative_main">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/name"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/name_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_toEndOf="@id/name"
-        android:text="@string/textview"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/name_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/name"
+            android:text="@string/textview"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/rollno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/roll_no"
-        android:textSize="24sp"
-        android:layout_below="@id/name"/>
+        <TextView
+            android:id="@+id/rollno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:text="@string/roll_no"
+            android:textSize="12sp"
+            android:layout_below="@id/name"/>
 
-    <TextView
-        android:id="@+id/rollno_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name_details"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="105dp"
-        android:layout_toEndOf="@id/rollno"
-        android:text="@string/textview"
-        android:textSize="24sp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/blood_Group"
-        android:textSize="24sp"
-        android:layout_below="@id/rollno"
-        android:layout_marginTop="75dp"
-        android:layout_marginStart="30dp"
-        android:id="@+id/bloog_group"/>
+        <TextView
+            android:id="@+id/rollno_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name_details"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/rollno"
+            android:text="@string/textview"
+            android:textSize="12sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blood_Group"
+            android:textSize="12sp"
+            android:layout_below="@id/rollno"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:id="@+id/bloog_group"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rollno_details"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="75dp"
-        android:layout_toEndOf="@id/bloog_group"
-        android:text="@string/textview"
-        android:textSize="24sp"
-        android:id="@+id/blood_group_details"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/DOB"
-        android:text="@string/dob"
-        android:textSize="24sp"
-        android:layout_below="@id/bloog_group"
-        android:layout_marginTop="75dp"
-        android:layout_marginStart="50dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rollno_details"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/bloog_group"
+            android:text="@string/textview"
+            android:textSize="12sp"
+            android:id="@+id/blood_group_details"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/DOB"
+            android:text="@string/dob"
+            android:textSize="12sp"
+            android:layout_below="@id/bloog_group"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"/>
 
-    <TextView
-        android:id="@+id/DOB_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/blood_group_details"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="75dp"
-        android:layout_toEndOf="@id/DOB"
-        android:text="@string/textview"
-        android:textSize="24sp" />
+        <TextView
+            android:id="@+id/DOB_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/blood_group_details"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/DOB"
+            android:text="@string/textview"
+            android:textSize="12sp" />
+    </RelativeLayout>
 
-
-</RelativeLayout>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/edit_icon"
+           android:layout_centerHorizontal="true">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_edit_24"
+               android:contentDescription="@string/todo" />
+       </RelativeLayout>
+       <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_toEndOf="@id/edit_icon"
+           android:id="@+id/delete_icon">
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_delete_24"
+               android:paddingStart="50dp"
+               android:contentDescription="@string/todo"
+               tools:ignore="RtlSymmetry" />
+       </RelativeLayout>
+   </RelativeLayout>
+</LinearLayout>
